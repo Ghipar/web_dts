@@ -180,12 +180,6 @@ $_SESSION['start_time'] = time();
                               </div>
                           </div>
                           <div class="form-group">
-                              <label class="col-sm-2 col-sm-2 control-label">Password</label>
-                              <div class="col-sm-10">
-                                  <input name="password" type="text" id="password" class="form-control" value="<?php echo $data['password'];?>" required />
-                              </div>
-                          </div>
-                          <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">Fullname</label>
                               <div class="col-sm-10">
                                   <input name="fullname" class="form-control" id="fullname" type="text" value="<?php echo $data['fullname'];?>" required />

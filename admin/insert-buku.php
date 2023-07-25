@@ -32,4 +32,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     header('Location: input-buku.php');
 }
-?>

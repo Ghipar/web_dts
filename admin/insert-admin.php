@@ -6,7 +6,7 @@ include "../conn.php";
 if (!empty($_FILES["nama_file"]["tmp_name"])) {
     $jenis_gambar = $_FILES['nama_file']['type'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']); 
     $fullname = $_POST['fullname'];
 
     if ($jenis_gambar == "image/jpeg" || $jenis_gambar == "image/jpg" || $jenis_gambar == "image/x-png") {

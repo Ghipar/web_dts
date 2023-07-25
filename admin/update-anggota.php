@@ -19,7 +19,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 		$gambar = $namafolder . basename($_FILES['nama_file']['name']);		
 		if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
 			$sql="UPDATE data_anggota SET no_induk='$no_induk', nama='$nama', jk='$jk', kelas='$kelas', ttl='$ttl', alamat='$alamat', foto='$gambar' WHERE id='$id'";
-			$res=mysql_query($sql) or die (mysql_error());
+			$res=mysqli_query($conn,$sql) or die (mysqli_error($conn));
 			echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<h3><a href='anggota.php'> Input Lagi</a></h3>";	   
 		} else {

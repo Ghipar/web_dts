@@ -37,6 +37,7 @@
     </a>
         <ul class="treeview-menu">
             <li><a href="transaksi.php"><i class="fa fa-angle-double-right"></i> Data Transaksi</a></li>
+            <li><a href="historitrans.php"><i class="fa fa-angle-double-right"></i> Histori Transaksi</a></li>
             <li><a href="input-transaksi.php"><i class="fa fa-angle-double-right"></i>Tambah Transaksi</a></li>
         </ul>
     </li>

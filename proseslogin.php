@@ -5,7 +5,7 @@ date_default_timezone_set('Asia/Jakarta');
 session_start();
 
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST['password']); 
 
 $username = mysqli_real_escape_string($conn, $username);
 $password = mysqli_real_escape_string($conn, $password);
@@ -37,7 +37,7 @@ if (mysqli_num_rows($row) == 1) {
 
 	header('location:admin/index.php');
 } else {
-	header('location:login.html?error=4');
+	header('location:login.html?error=4'.$password);
 }
 
 mysqli_close($conn);

@@ -171,7 +171,7 @@ $_SESSION['start_time'] = time();
                           </div>
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">No Induk</label>
-                              <div class="col-sm-8">
+                              <div class="col-sm-8"> 
                                   <input name="no_induk" type="text" id="no_induk" class="form-control" placeholder="Ex : 00123" required />
                                   <!--<span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>-->
                               </div>

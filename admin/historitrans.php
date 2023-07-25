@@ -167,7 +167,7 @@ if (empty($_SESSION['username'])) {
                             <!-- </div> -->
                             <div class="panel-body table-responsive">
                                 <div class="box-tools m-b-15">
-                                    <form action="transaksi.php" method="POST">
+                                    <form action="historitrans.php" method="POST">
                                         <div class="input-group">
                                             <input type='text' class="form-control input-sm pull-right" style="width: 150px;" name='qcari' placeholder='Cari berdasarkan nama' required />
                                             <div class="input-group-btn">
@@ -177,13 +177,13 @@ if (empty($_SESSION['username'])) {
                                     </form>
                                 </div>
                                 <?php
-                                $query1 = "select trans_pinjam.id, trans_pinjam.nama_peminjam, trans_pinjam.tgl_pinjam, trans_pinjam.tgl_kembali, trans_pinjam.status, data_buku.judul from trans_pinjam INNER JOIN data_buku ON trans_pinjam.id_buku = data_buku.id where status = 'Dipinjam' || status = 'Terlambat'";
+                                $query1 = "select trans_pinjam.id, trans_pinjam.nama_peminjam, trans_pinjam.tgl_pinjam, trans_pinjam.tgl_kembali, trans_pinjam.status, data_buku.judul from trans_pinjam INNER JOIN data_buku ON trans_pinjam.id_buku = data_buku.id where status = 'Kembali'";
 
                                 if (isset($_POST['qcari'])) {
                                     $qcari = $_POST['qcari'];
-                                    $query1 = "SELECT * FROM  trans_pinjam INNER JOIN data_buku ON trans_pinjam.id_buku = data_buku.id
+                                    $query1 = "SELECT trans_pinjam.id, trans_pinjam.nama_peminjam, trans_pinjam.tgl_pinjam, trans_pinjam.tgl_kembali, trans_pinjam.status, data_buku.judul from trans_pinjam INNER JOIN data_buku ON trans_pinjam.id_buku = data_buku.id 
 	               where judul like '%$qcari%'
-	               or nama_peminjam like '%$qcari%' and status = 'Dipinjam' || status = 'Terlambat'";
+	               or nama_peminjam like '%$qcari%' and status = 'kembali' ";
                                 }
                                 $tampil = mysqli_query($conn, $query1) or die(mysqli_error($conn));
                                 ?>
@@ -205,39 +205,23 @@ if (empty($_SESSION['username'])) {
                                             <th>
                                                 <center>Status</center>
                                             </th>
-                                            <th>
-                                                <center>Kembali</center>
-                                            </th>
                                         </tr>
                                     </thead>
                                     <?php while ($data = mysqli_fetch_array($tampil)) { ?>
                                         <tbody>
                                             <tr>
-                                                <td><span class="fa fa-book"></span> <?php echo $data['judul']; ?></td>
+                                                <td><a href="404.php?hal=edit&kd=<?php echo $data['id']; ?>"><span class="fa fa-book"></span> <?php echo $data['judul']; ?></a></td>
                                                 <td><?php echo $data['nama_peminjam']; ?></td>
                                                 <td><?php echo $data['tgl_pinjam']; ?></td>
                                                 <td><?php echo $data['tgl_kembali']; ?></td>
-                                                <td style="<?php echo ($data['status'] == 'Dipinjam')? 'background-color: green;':'background-color: red;';?>  color: white; font-weight: bold;"><?php echo $data['status']; ?></td>
-                                                <td>
-                                                    <center><a href="update-trans.php?hal=update&kd=<?php echo $data['id']; ?>" class="btn btn-success"><i class="fa-solid fa-check"></i></a></center>
-                                                </td>
+                                                <td style="background-color: green; color: white; font-weight: bold;"><?php echo $data['status']; ?></td>
                                             <?php
-                                            if (date("Y-m-d") > $data['tgl_kembali']) {
-                                                $id2 = $data['id'];
-                                                $sql = "UPDATE `trans_pinjam` SET 
-                                                `status`='Terlambat' WHERE id = '$id2'";
-                                                if (mysqli_query($conn, $sql)) {
-                                                    
-                                                } 
-                                            } else {
-                                                // error
-                                            }
                                         }
                                             ?>
                                         </tbody>
                                 </table>
 
-                                <?php $tampil = mysqli_query($conn, "select * from trans_pinjam where status = 'Dipinjam' || status = 'Terlambat' order by id");
+                                <?php $tampil = mysqli_query($conn, "select * from trans_pinjam where status = 'Kembali' order by id");
                                 $transaksi = mysqli_num_rows($tampil);
                                 ?>
                                 <center>
@@ -288,7 +272,6 @@ if (empty($_SESSION['username'])) {
 
     <!-- Director dashboard demo (This is only for demo purposes) -->
     <script src="../js/Director/dashboard.js" type="text/javascript"></script>
-    <script src="https://kit.fontawesome.com/75690d0497.js" crossorigin="anonymous"></script>
 
     <!-- Director for demo purposes -->
     <script type="text/javascript">

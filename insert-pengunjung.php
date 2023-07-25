@@ -14,7 +14,7 @@ $jam_kunjung = $_POST['jam_kunjung'];
     //echo "<b>Data Harus Di isi.!!!</b>";
 //}else{
 
-$query = mysql_query("INSERT INTO pengunjung (id, nama, jk, kelas, perlu1, cari, saran, tgl_kunjung, jam_kunjung) VALUES ('$id', '$nama', '$jk', '$kelas', '$perlu1', '$cari', '$saran', '$tgl_kunjung', '$jam_kunjung')");
+$query = mysqli_query($conn,"INSERT INTO pengunjung (id, nama, jk, kelas, perlu1, cari, saran, tgl_kunjung, jam_kunjung) VALUES ('$id', '$nama', '$jk', '$kelas', '$perlu1', '$cari', '$saran', '$tgl_kunjung', '$jam_kunjung')");
 if ($query){
 	echo "<script>alert('Data Karyawan Berhasil dimasukan!'); window.location = 'index.php'</script>";	
 } else {

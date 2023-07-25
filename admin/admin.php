@@ -181,14 +181,13 @@ $_SESSION['start_time'] = time();
 	               where fullname like '%$qcari%'
 	               or username like '%$qcari%'  ";
                     }
-                    $tampil=mysqli_query($conn, $query1) or die(mysql_error());
+                    $tampil=mysqli_query($conn, $query1) or die(mysqli_error($conn));
                     ?>
                                     <table id="example" class="table table-hover table-bordered">
                   <thead>
                       <tr>
                         <th><center>User ID <i class="fa fa-sort"></i></center></th>
                         <th><center>Username <i class="fa fa-sort"></i></center></th>
-                        <th><center>Password <i class="fa fa-sort"></i></center></th>
                         <th><center>Fullname <i class="fa fa-sort"></i></center></th>
                         <th><center>Foto <i class="fa fa-sort"></i></center></th>
                         <th><center>Tools</center></th>
@@ -200,7 +199,6 @@ $_SESSION['start_time'] = time();
                     <tr>
                     <td><?php echo $data['user_id']; ?></td>
                     <td><?php echo $data['username'];?></td>
-                    <td><?php echo $data['password'];?></td>
                     <td><a href="detail-admin.php?hal=edit&kd=<?php echo $data['user_id'];?>"><span class="glyphicon glyphicon-user"></span> <?php echo $data['fullname']; ?></a></td>
                     <td><center><img src="<?php echo $data['gambar']; ?>" class="img-circle" height="80" width="75" style="border: 3px solid #333333;" /></center></td>
                     <td><center><div id="thanks"><a class="btn btn-sm btn-primary" data-placement="bottom" data-toggle="tooltip" title="Edit Admin" href="edit-admin.php?hal=edit&kd=<?php echo $data['user_id'];?>"><span class="glyphicon glyphicon-edit"></span></a>

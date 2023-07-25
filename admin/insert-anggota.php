@@ -20,7 +20,7 @@ if (!empty($_FILES["nama_file"]["tmp_name"]))
 		if (move_uploaded_file($_FILES['nama_file']['tmp_name'], $gambar)) {
 			$sql="INSERT INTO data_anggota(id,no_induk,nama,jk,kelas,ttl,alamat,foto) VALUES
             ('$id','$no_induk','$nama','$jk','$kelas','$ttl','$alamat','$gambar')";
-			$res=mysql_query($sql) or die (mysql_error());
+			$res=mysqli_query($conn,$sql) or die (mysqli_error($conn));
 			echo "Gambar berhasil dikirim ke direktori".$gambar;
             echo "<h3><a href='input-anggota.php'> Input Lagi</a></h3>";
             echo "<h3><a href='anggota.php'> Data Anggota</a></h3>";	   

@@ -177,19 +177,13 @@ $_SESSION['start_time'] = time();
                     <td width="250">Username</td>
                     <td width="550"><?php echo $data['username']; ?></td>
                     </tr>
-                    <tr>
-                    <td>Password</td>
-                    <td><?php echo $data['password']; ?></td>
-                    </tr>
-                    <tr>
+                    
                     <td>Fullname</td>
                     <td><?php echo $data['fullname']; ?></td>
                     </tr>
                    </table>
                   <!-- </div>-->
-                  <?php// $tampil=mysql_query("select * from karyawan order by nip desc");
-                        //$user=mysql_num_rows($tampil);
-                    ?>
+                 
                    <!-- <center><h4>Jumlah Karyawan : <?php //echo "$user"; ?> Orang </h4> </center> -->
                 <div class="text-right">
                 <a href="admin.php" class="btn btn-sm btn-warning"> Kembali <i class="fa fa-arrow-circle-right"></i></a>

@@ -4,6 +4,12 @@ if (empty($_SESSION['username'])){
 	header('location:../index.php');	
 } else {
 	include "../conn.php";
+    // $st = $_GET['status'];
+    //     if ($st == 'success') {
+    //         echo "<script type='text/javascript'>alert('Data tersimpan');</script>";
+    //     } else if ($st != 'success') {
+    //         echo "<script type='text/javascript'>alert('Data gagal tersimpan');</script>";
+    //     }
 ?>
 <!DOCTYPE html>
 <html>
