@@ -37,7 +37,7 @@ if (mysqli_num_rows($row) == 1) {
 
 	header('location:admin/index.php');
 } else {
-	header('location:login.html?error=4'.$password);
+	header('location:login.html?error=4');
 }
 
 mysqli_close($conn);
